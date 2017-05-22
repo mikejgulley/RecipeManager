@@ -5,13 +5,17 @@ import com.lumatik.model.Recipe;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mikejgulley on 5/21/2017.
  */
 public interface RecipeDAO {
     void createRecipe(String name);
-    List<Recipe> getAllRecipes();
+    void addIngredientsToRecipe(int recipeId, List<String> ingredients);
+    void addDirectionsToRecipe(int recipeId, List<String> directions);
+    //List<Recipe> getAllRecipes();
+    Map<Integer, Recipe> getAllRecipes();
     List<Recipe> getAllFavoriteRecipes();
     List<Recipe> getRecipesByDateRange(LocalDate startDate, LocalDate endDate);
     List<Recipe> getRecipesByDifficulty(String difficulty);

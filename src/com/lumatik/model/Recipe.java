@@ -26,6 +26,11 @@ public class Recipe {
     private LocalDate lastMadeDate;
     private LocalDate updateDate;
 
+    public Recipe(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Recipe(int id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
         this.id = id;
         this.name = name;
@@ -146,9 +151,9 @@ public class Recipe {
         return createDate;
     }
 
-//    public void setCreateDate(LocalDate createDate) {
-//        this.createDate = createDate;
-//    }
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
 
     public LocalDate getLastMadeDate() {
         return lastMadeDate;
