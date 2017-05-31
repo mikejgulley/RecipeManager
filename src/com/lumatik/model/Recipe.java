@@ -191,14 +191,21 @@ public class Recipe {
         return result;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Recipe{" +
+//                "name='" + name + '\'' +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "Recipe{" +
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", genre='" + genre + '\'' +
-                ", rating=" + rating +
-                ", difficulty=" + difficulty +
+                ", rating=" + String.valueOf(rating.getRating()) +
+                ", difficulty=" + String.valueOf(difficulty.getDifficulty()) +
                 ", createDate=" + createDate +
                 '}';
     }

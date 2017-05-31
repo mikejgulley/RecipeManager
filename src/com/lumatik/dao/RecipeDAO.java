@@ -1,4 +1,4 @@
-package com.lumatik.controller;
+package com.lumatik.dao;
 
 import com.lumatik.model.Rating;
 import com.lumatik.model.Recipe;
