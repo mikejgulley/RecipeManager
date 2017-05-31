@@ -29,6 +29,9 @@ public class Recipe {
     public Recipe(int id, String name) {
         this.id = id;
         this.name = name;
+        this.difficulty = Difficulty.NONE;
+        this.rating = Rating.NONE;
+        this.createDate = LocalDate.now();
     }
 
     public Recipe(int id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {

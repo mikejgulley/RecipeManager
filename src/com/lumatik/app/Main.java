@@ -41,7 +41,7 @@ public class Main {
         ingredients2.add("Cracker Jax");
         ingredients2.add("Water");
         ingredients2.add("Curry");
-        recipe2.setDifficulty(Difficulty.EASY);
+        //recipe2.setDifficulty(Difficulty.EASY);
         recipe2.setRating(Rating.FIVE_STARS);
         recipeDAO.addIngredientsToRecipe(1, ingredients2);
 

@@ -18,7 +18,6 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
     @Override
     public void createRecipe(String name) {
         Recipe recipe = new Recipe(counter, name);
-        recipe.setCreateDate(LocalDate.now());
         recipesMap.put(counter, recipe);
         counter++;
     }
