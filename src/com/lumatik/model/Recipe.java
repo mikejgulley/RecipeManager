@@ -7,7 +7,7 @@ import java.util.List;
  * Created by mikejgulley on 5/21/2017.
  */
 public class Recipe {
-    private int id;
+    private final Long id;
     private String name;
     private String description;
     private String genre;
@@ -26,7 +26,7 @@ public class Recipe {
     private LocalDate lastMadeDate;
     private LocalDate updateDate;
 
-    public Recipe(int id, String name) {
+    public Recipe(Long id, String name) {
         this.id = id;
         this.name = name;
         this.difficulty = Difficulty.NONE;
@@ -34,7 +34,7 @@ public class Recipe {
         this.createDate = LocalDate.now();
     }
 
-    public Recipe(int id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
+    public Recipe(Long id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -42,7 +42,7 @@ public class Recipe {
         this.createDate = createDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -188,18 +188,11 @@ public class Recipe {
 
     @Override
     public int hashCode() {
-        int result = getId();
-        result = 31 * result + getName().hashCode();
-        result = 31 * result + getCreateDate().hashCode();
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + (getCreateDate() != null ? getCreateDate().hashCode() : 0);
         return result;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Recipe{" +
-//                "name='" + name + '\'' +
-//                '}';
-//    }
 
     @Override
     public String toString() {
