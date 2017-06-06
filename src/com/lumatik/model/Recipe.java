@@ -7,7 +7,7 @@ import java.util.List;
  * Created by mikejgulley on 5/21/2017.
  */
 public class Recipe {
-    private final Long id;
+    private final int id;
     private String name;
     private String description;
     private String genre;
@@ -26,7 +26,7 @@ public class Recipe {
     private LocalDate lastMadeDate;
     private LocalDate updateDate;
 
-    public Recipe(Long id, String name) {
+    public Recipe(int id, String name) {
         this.id = id;
         this.name = name;
         this.difficulty = Difficulty.NONE;
@@ -34,7 +34,7 @@ public class Recipe {
         this.createDate = LocalDate.now();
     }
 
-    public Recipe(Long id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
+    public Recipe(int id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
@@ -42,7 +42,7 @@ public class Recipe {
         this.createDate = createDate;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -182,15 +182,13 @@ public class Recipe {
         Recipe recipe = (Recipe) o;
 
         if (getId() != recipe.getId()) return false;
-        if (!getName().equals(recipe.getName())) return false;
-        return getCreateDate().equals(recipe.getCreateDate());
+        return getName().equals(recipe.getName());
     }
 
     @Override
     public int hashCode() {
-        int result = getId() != null ? getId().hashCode() : 0;
-        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-        result = 31 * result + (getCreateDate() != null ? getCreateDate().hashCode() : 0);
+        int result = getId();
+        result = 31 * result + getName().hashCode();
         return result;
     }
 
