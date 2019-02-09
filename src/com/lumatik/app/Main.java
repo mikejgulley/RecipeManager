@@ -34,7 +34,7 @@ public class Main {
         ingredients1.add("Chips");
         recipe1.setDifficulty(Difficulty.MEDIUM);
         recipe1.setRating(Rating.FOUR_STARS);
-        recipeDAO.addIngredientsToRecipe(0, ingredients1);
+        recipeDAO.addIngredientsToRecipe(recipe1.getId(), ingredients1);
 
         Recipe recipe2 = recipeDAO.getRecipeById(1);
         List<String> ingredients2 = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Main {
         ingredients2.add("Curry");
         //recipe2.setDifficulty(Difficulty.EASY);
         recipe2.setRating(Rating.FIVE_STARS);
-        recipeDAO.addIngredientsToRecipe(1, ingredients2);
+        recipeDAO.addIngredientsToRecipe(recipe2.getId(), ingredients2);
 
         for (Recipe currentRecipe : recipes.values()) {
             System.out.println(currentRecipe.toString() +'\n' + currentRecipe.getIngredients());
