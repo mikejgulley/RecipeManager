@@ -18,6 +18,6 @@ public enum Rating {
     }
 
     public String getRating() {
-        return rating != null ? rating : this.NONE.getRating();
+        return rating != null ? rating : NONE.getRating();
     }
 }

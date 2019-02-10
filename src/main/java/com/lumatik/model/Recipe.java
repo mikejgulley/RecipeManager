@@ -198,8 +198,8 @@ public class Recipe {
                 "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", genre='" + genre + '\'' +
-                ", rating=" + String.valueOf(rating.getRating()) +
-                ", difficulty=" + String.valueOf(difficulty.getDifficulty()) +
+                ", rating=" + rating.getRating() +
+                ", difficulty=" + difficulty.getDifficulty() +
                 ", createDate=" + createDate +
                 '}';
     }

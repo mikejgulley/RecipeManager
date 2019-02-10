@@ -16,6 +16,6 @@ public enum Difficulty {
     }
 
     public String getDifficulty() {
-        return difficulty != null ? difficulty : this.NONE.getDifficulty();
+        return difficulty != null ? difficulty : NONE.getDifficulty();
     }
 }
