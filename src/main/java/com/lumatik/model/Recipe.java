@@ -7,7 +7,9 @@ import java.util.List;
  * Created by mikejgulley on 5/21/2017.
  */
 public class Recipe {
+    // Unique
     private final int id;
+    // Unique
     private String name;
     private String description;
     private String genre;
@@ -24,7 +26,7 @@ public class Recipe {
     private String videoUrl;
     private LocalDate createDate;
     private LocalDate lastMadeDate;
-    private LocalDate updateDate;
+    private LocalDate lastUpdatedDate;
 
     public Recipe(int id, String name) {
         this.id = id;
@@ -32,14 +34,39 @@ public class Recipe {
         this.difficulty = Difficulty.NONE;
         this.rating = Rating.NONE;
         this.createDate = LocalDate.now();
+        this.lastUpdatedDate = LocalDate.now();
     }
 
-    public Recipe(int id, String name, List<String> ingredients, List<String> directions, LocalDate createDate) {
+    public Recipe(int id, String name, List<String> ingredients, List<String> directions) {
         this.id = id;
         this.name = name;
+        this.difficulty = Difficulty.NONE;
+        this.rating = Rating.NONE;
         this.ingredients = ingredients;
         this.directions = directions;
-        this.createDate = createDate;
+        this.createDate = LocalDate.now();
+        this.lastUpdatedDate = LocalDate.now();
+    }
+
+    public Recipe(int id, String name, String description, String genre, List<String> ingredients,
+                  List<String> altIngredients, List<String> cookware, List<String> directions, Rating rating,
+                  Difficulty difficulty, boolean isFavorite, List<String> pairWithOptions, List<String> notes,
+                  String pictureUrl, String videoUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.genre = genre;
+        this.ingredients = ingredients;
+        this.altIngredients = altIngredients;
+        this.cookware = cookware;
+        this.directions = directions;
+        this.rating = rating;
+        this.difficulty = difficulty;
+        this.isFavorite = isFavorite;
+        this.pairWithOptions = pairWithOptions;
+        this.notes = notes;
+        this.pictureUrl = pictureUrl;
+        this.videoUrl = videoUrl;
     }
 
     public int getId() {
@@ -166,13 +193,13 @@ public class Recipe {
         this.lastMadeDate = lastMadeDate;
     }
 
-    public LocalDate getUpdateDate() {
-        return updateDate;
+    public LocalDate getLastUpdatedDate() {
+        return lastUpdatedDate;
     }
 
-//    public void setUpdateDate(LocalDate updateDate) {
-//        this.updateDate = updateDate;
-//    }
+    public void setLastUpdatedDate(LocalDate lastUpdatedDate) {
+        this.lastUpdatedDate = lastUpdatedDate;
+    }
 
     @Override
     public boolean equals(Object o) {

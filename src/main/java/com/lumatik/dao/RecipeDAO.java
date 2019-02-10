@@ -24,6 +24,6 @@ public interface RecipeDAO {
     List<Recipe> getRecipesByIngredients(List<String> ingredients);
     Recipe getRecipeById(int id);
     Recipe getRecipeByName(String name);
-    void updateRecipe(int recipeId);
+    void updateRecipe(Recipe recipe);
     void deleteRecipe(int recipeId);
 }

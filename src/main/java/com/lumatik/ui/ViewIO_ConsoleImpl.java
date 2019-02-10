@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class ViewIO_ConsoleImpl implements ViewIO {
     private static Logger logger = Logger.getLogger(ViewIO_ConsoleImpl.class);
     private Scanner sc = new Scanner(System.in);
-    private static int counter = 0;
 
     public void printWelcomeMessage() {
         System.out.println("Welcome to the Lumatik Recipe Manager");
@@ -40,9 +39,10 @@ public class ViewIO_ConsoleImpl implements ViewIO {
     }
 
     public void printRecipeList(List<Recipe> recipeList) {
-        for (Recipe currentRecipe : recipeList) {
-            System.out.println(currentRecipe.getId() + ": " + currentRecipe.getName());
-            counter++;
-        }
+//        for (Recipe currentRecipe : recipeList) {
+//            System.out.println(currentRecipe.getId() + ": " + currentRecipe.getName());
+//        }
+
+        recipeList.forEach(recipe -> System.out.println(recipe.getId() + ": " + recipe.getName()));
     }
 }

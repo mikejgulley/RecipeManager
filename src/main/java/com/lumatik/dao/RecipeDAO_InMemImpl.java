@@ -5,21 +5,23 @@ import com.lumatik.model.Recipe;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by mikejgulley on 5/21/2017.
  */
 public class RecipeDAO_InMemImpl implements RecipeDAO {
-//    private Map<Integer, Recipe> recipesMap = new HashMap<>();
-    private List<Recipe> recipeList = new ArrayList<>();
-    private static int counter = 1;
+    private Map<Integer, Recipe> recipeMap = new HashMap<>();
+    //private List<Recipe> recipeList = new ArrayList<>();
+    private int counter = 0;
 
     public Recipe createRecipe(String name) {
         Recipe recipe = new Recipe(counter, name);
         // TODO - Refactor - Map may not be necessary, List might suffice since obj has id
-//        recipesMap.put(counter, recipe);
-        recipeList.add(recipe);
+        recipeMap.put(counter, recipe);
+        //recipeList.add(recipe);
         counter++;
 
         return recipe;
@@ -34,7 +36,7 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
     }
 
     public List<Recipe> getAllRecipes() {
-        return recipeList;
+        return new ArrayList<>(recipeMap.values());
     }
 
     public List<Recipe> getAllFavoriteRecipes() {
@@ -66,19 +68,29 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
     }
 
     public Recipe getRecipeById(int id) {
-//        return recipesMap.get(id);
-        return recipeList.get(id);
+        return recipeMap.get(id);
+        //return recipeList.get(id);
     }
 
+    // TODO - limit to unique name, only one result else throw exception
     public Recipe getRecipeByName(String name) {
+        //recipeList.stream().filter(recipe -> recipe.getName().equals(name)).collect(Collectors.toList());
+
+        for (Recipe currentRecipe : recipeMap.values()) {
+            if (currentRecipe.getName().equals(name)) {
+                return currentRecipe;
+            }
+        }
+
         return null;
     }
 
-    public void updateRecipe(int recipeId) {
-
+    public void updateRecipe(Recipe updatedRecipe) {
+        updatedRecipe.setLastUpdatedDate(LocalDate.now());
+        recipeMap.put(updatedRecipe.getId(), updatedRecipe);
     }
 
     public void deleteRecipe(int recipeId) {
-
+        recipeMap.remove(recipeId);
     }
 }
