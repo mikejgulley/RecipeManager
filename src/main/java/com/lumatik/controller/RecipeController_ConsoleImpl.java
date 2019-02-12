@@ -17,7 +17,7 @@ public class RecipeController_ConsoleImpl implements RecipeController {
 
     public Recipe addRecipe() {
         String name = io.getRecipeName();
-        return recipeDAO.createRecipe(name);
+        return recipeDAO.addRecipe(name);
     }
 
     public Recipe getRecipeById(int id) {

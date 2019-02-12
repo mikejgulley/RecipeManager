@@ -10,10 +10,9 @@ import java.util.List;
  * Created by mikejgulley on 5/21/2017.
  */
 public interface RecipeDAO {
-    Recipe createRecipe(String name);
+    Recipe addRecipe(String name);
     void addIngredientsToRecipe(int recipeId, List<String> ingredients);
     void addDirectionsToRecipe(int recipeId, List<String> directions);
-    //List<Recipe> getAllRecipes();
     List<Recipe> getAllRecipes();
     List<Recipe> getAllFavoriteRecipes();
     List<Recipe> getRecipesByDateRange(LocalDate startDate, LocalDate endDate);
@@ -24,6 +23,7 @@ public interface RecipeDAO {
     List<Recipe> getRecipesByIngredients(List<String> ingredients);
     Recipe getRecipeById(int id);
     Recipe getRecipeByName(String name);
-    void updateRecipe(Recipe recipe);
-    void deleteRecipe(int recipeId);
+    Recipe updateRecipe(Recipe recipe);
+    void deleteRecipe(Recipe recipe);
+    Recipe markRecipeAsFavorite(Recipe recipe);
 }

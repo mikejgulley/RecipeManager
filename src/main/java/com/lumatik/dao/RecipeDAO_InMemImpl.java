@@ -17,7 +17,7 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
     //private List<Recipe> recipeList = new ArrayList<>();
     private int counter = 0;
 
-    public Recipe createRecipe(String name) {
+    public Recipe addRecipe(String name) {
         Recipe recipe = new Recipe(counter, name);
         // TODO - Refactor - Map may not be necessary, List might suffice since obj has id
         recipeMap.put(counter, recipe);
@@ -40,7 +40,16 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
     }
 
     public List<Recipe> getAllFavoriteRecipes() {
-        return null;
+        List<Recipe> favoriteRecipes = new ArrayList<>();
+
+        // TODO - replace with declarative code instead of iterative
+        for (Recipe currentRecipe : recipeMap.values()) {
+            if (currentRecipe.isFavorite()) {
+                favoriteRecipes.add(currentRecipe);
+            }
+        }
+
+        return favoriteRecipes;
     }
 
     public List<Recipe> getRecipesByDateRange(LocalDate startDate, LocalDate endDate) {
@@ -85,12 +94,20 @@ public class RecipeDAO_InMemImpl implements RecipeDAO {
         return null;
     }
 
-    public void updateRecipe(Recipe updatedRecipe) {
+    public Recipe updateRecipe(Recipe updatedRecipe) {
         updatedRecipe.setLastUpdatedDate(LocalDate.now());
         recipeMap.put(updatedRecipe.getId(), updatedRecipe);
+
+        return recipeMap.get(updatedRecipe.getId());
     }
 
-    public void deleteRecipe(int recipeId) {
-        recipeMap.remove(recipeId);
+    public void deleteRecipe(Recipe recipe) {
+        recipeMap.remove(recipe.getId());
+    }
+
+    public Recipe markRecipeAsFavorite(Recipe recipe) {
+        recipeMap.get(recipe.getId()).setIsFavorite(true);
+
+        return recipeMap.get(recipe.getId());
     }
 }
